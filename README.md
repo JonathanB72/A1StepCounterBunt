@@ -4,6 +4,7 @@ A1 Ubicomp2020 Assignment
 On my honor I have neither given nor recieved any unauthorized aid on this assessment
 
 # Helping sites
+https://github.com/comp-well-org/ubicomp2020Spring
 https://examples.javacodegeeks.com/android/core/hardware/sensor/android-accelerometer-example/
 https://www.geeksforgeeks.org/window-sliding-technique/
 https://www.w3schools.com/java/
