@@ -72,7 +72,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 new View.OnClickListener() {
                     public void onClick(View view) {
                         onResume();
-                        thsdNum = Float.parseFloat(thsdInput.getText().toString());
+                        try {
+                            thsdNum = Float.parseFloat(thsdInput.getText().toString());
+                        }catch (Exception e) {
+                            thsdNum = 0;
+                            thsdInput.setText("0.0");
+                        }
                         Count = 0;
                         resetWindows();
                     }
@@ -145,8 +150,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
 
             isShaking();
-            //if stopped shaking for more than 3 seconds, Shakin = false
-            if (CurrentTime - ShakinTime > 3000)
+            //if stopped shaking for more than 2 seconds, Shakin = false just for visibility after shaking
+            if (CurrentTime - ShakinTime > 2000)
                 Shakin = false;
             updateText();
         }
@@ -196,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         //if z crossing 0 first and foremost, easiest step detection method I found
 
-        if(ZSlidingWindow[0] < 0 && ZSlidingWindow[49] >0){
+        if((ZSlidingWindow[0] < 0 && ZSlidingWindow[49] >0)||(ZSlidingWindow[0] > 0 && ZSlidingWindow[49] < 0)){
             Count++;
             resetWindows();
             Shakin = true;
@@ -217,10 +222,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    public void stepCounter(){
-
-
-    }
 
     public void updateText(){
 
